@@ -68,3 +68,12 @@ button:hover {
 .result-item {
   margin-bottom: 8px;
 }
+
+#footer {
+  text-align: center;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-top: 1px solid #ccc;
+  font-size: 14px;
+}
