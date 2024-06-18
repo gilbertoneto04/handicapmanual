@@ -1,6 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
+  background: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
   margin: 20px;
 }
 
@@ -145,28 +145,10 @@ button:hover {
 .wrapper .icon:hover .tooltip {
   text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.4);
 }
-.wrapper .facebook:hover span,
-.wrapper .facebook:hover .tooltip,
-.wrapper .facebook:hover .tooltip:before {
-  background: #3b5999;
-}
-.wrapper .twitter:hover span,
-.wrapper .twitter:hover .tooltip,
-.wrapper .twitter:hover .tooltip:before {
-  background: #46c1f6;
-}
 .wrapper .instagram:hover span,
 .wrapper .instagram:hover .tooltip,
 .wrapper .instagram:hover .tooltip:before {
   background: #e1306c;
-}
-.wrapper .github:hover span,
-.wrapper .github:hover .tooltip,
-.wrapper .github:hover .tooltip:before {
-  background: #333;
-}
-.wrapper .youtube:hover span,
-.wrapper .youtube:hover .tooltip,
-.wrapper .youtube:hover .tooltip:before {
-  background: #de463b;
+  padding: 8px 14px; /* Ajuste o padding para reduzir o tamanho */
+  font-size: 16px; /* Ajuste opcional para reduzir o tamanho da fonte */
 }
