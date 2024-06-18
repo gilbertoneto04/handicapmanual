@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handicap Manual</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Handicap Manual</h1>
+
+        <form id="handicapForm">
+            <label for="stake">Stake:</label>
+            <input type="text" placeholder="Insira aqui o valor a ser utilizado na aposta" id="stake" name="stake"
+                autocomplete="off"><br>
+
+            <label for="oddempate">Odd do empate:</label>
+            <input type="text" placeholder="Insira aqui a odd do empate" id="oddempate" name="oddempate"
+                autocomplete="off"><br>
+
+            <label for="oddml">Odd da vitória:</label>
+            <input type="text" placeholder="Insira aqui a odd da vitória" id="oddml" name="oddml"
+                autocomplete="off"><br>
+
+            <div class="button-container">
+                <button type="button" onclick="calcular('menos025')">Handicap -0.25</button>
+                <button type="button" onclick="calcular('dnb')">Empate Anula (0.0)</button>
+                <button type="button" onclick="calcular('mais025')">Handicap +0.25</button>
+                <button type="button" onclick="calcular('dc')">Dupla Chance (+0.5)</button>
+            </div>
+        </form>
+
+        <div id="results" class="results" style="display: none;">
+            <p class="result-item">Odd final: <span id="oddfinal"></span></p>
+            <p class="result-item">Stake do empate: R$ <span id="stakeempate"></span></p>
+            <p class="result-item">Stake da vitória: R$ <span id="stakeml"></span></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
