@@ -80,15 +80,16 @@ button:hover {
 .instagram-link {
   display: inline-block;
   text-decoration: none;
-  color: inherit;
+  color: #fff;
   padding: 8px 12px;
-  background-color: #405de6;
+  background-color: #e1306c; /* Cor de fundo do Instagram */
   border-radius: 4px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.4s ease;
+  margin-right: 20px; /* Espaçamento entre os botões */
 }
 
 .instagram-link:hover {
-  background-color: #1e90ff;
+  background-color: #ff6893; /* Cor de fundo ao passar o mouse */
 }
 
 .instagram-icon {
@@ -98,6 +99,7 @@ button:hover {
   background-image: url("caminho_para_sua_imagem_do_instagram.png"); /* Substitua pelo caminho da sua imagem */
   background-size: cover;
   margin-right: 8px; /* Espaçamento entre o ícone e o texto */
+  vertical-align: middle; /* Alinha verticalmente com o texto */
 }
 
 .instagram-username {
