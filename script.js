@@ -7,8 +7,8 @@ function calcular(operation) {
 
   switch (operation) {
     case "dc":
-      oddfinal =
-        ((oddempate * oddml) / (oddempate + oddml)) * (stake / oddempate);
+      oddfinal = (oddempate * oddml) / (oddempate + oddml);
+      // ((oddempate * oddml) / (oddempate + oddml)) * (stake / oddempate);
       stakeempate = (stake * oddml) / (oddempate + oddml);
       stakeml = stake - stakeempate;
       break;

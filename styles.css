@@ -72,10 +72,8 @@ button:hover {
 #footer {
   text-align: center;
   padding: 10px;
-  background: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
-  border-top: 1px solid #ccc;
-  font-size: 14px;
-  margin-top: 20px; /* Espaçamento entre o conteúdo principal e o footer */
+  font-size: 18px;
+  margin-top: 10px; /* Espaçamento entre o conteúdo principal e o footer */
 }
 
 .wrapper {
@@ -146,6 +144,7 @@ button:hover {
 .wrapper .icon:hover .tooltip {
   text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.4);
 }
+
 .wrapper .instagram:hover span,
 .wrapper .instagram:hover .tooltip,
 .wrapper .instagram:hover .tooltip:before {
