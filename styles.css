@@ -44,10 +44,6 @@ input[type="number"]::-webkit-inner-spin-button {
   margin: 0;
 }
 
-input[type="number"] {
-  -moz-appearance: textfield;
-}
-
 .button-container {
   display: flex;
   justify-content: space-between;
@@ -89,9 +85,10 @@ button:hover {
 
 .wrapper {
   display: inline-flex;
+  margin: 0 25px;
 }
 .wrapper .icon {
-  margin: 0 20px;
+  margin: 0 2px;
   text-align: center;
   cursor: pointer;
   display: flex;
@@ -164,4 +161,16 @@ button:hover {
 
 button:focus {
   background-color: #388e3c;
+}
+
+.wrapper .twitter:hover span,
+.wrapper .twitter:hover .tooltip,
+.wrapper .twitter:hover .tooltip:before {
+  background: #46c1f6;
+}
+
+.copyright {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 20px;
 }
