@@ -35,6 +35,17 @@ input[type="number"] {
   border-radius: 4px;
   box-sizing: border-box;
   font-size: 16px;
+  appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 .button-container {
@@ -149,4 +160,8 @@ button:hover {
 .wrapper .instagram:hover .tooltip,
 .wrapper .instagram:hover .tooltip:before {
   background: #e1306c;
+}
+
+button:focus {
+  background-color: #388e3c;
 }
