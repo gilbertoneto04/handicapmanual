@@ -10,34 +10,77 @@
 </head>
 
 <body>
+    <h1>Calculadora de Handicap Manual</h1>
     <div class="container">
-        <h1>Calculadora de Handicap Manual</h1>
+        <div class="column">
+            <!-- Apenas parte do handicap (nada a mexer por enquanto) -->
+            <form id="handicapForm">
+                <label for="stakeHandicap" class="stake-label">Stake:</label>
+                <input type="number" placeholder="Insira aqui o valor a ser utilizado na aposta" id="stakeHandicap"
+                    name="stakeHandicap" autocomplete="off"><br>
 
-        <form id="handicapForm">
-            <label for="stake">Stake:</label>
-            <input type="number" placeholder="Insira aqui o valor a ser utilizado na aposta" id="stake" name="stake"
-                autocomplete="off"><br>
+                <label for="oddempate">Odd do empate:</label>
+                <input type="number" placeholder="Insira aqui a odd do empate" id="oddempate" name="oddempate"
+                    autocomplete="off"><br>
 
-            <label for="oddempate">Odd do empate:</label>
-            <input type="number" placeholder="Insira aqui a odd do empate" id="oddempate" name="oddempate"
-                autocomplete="off"><br>
+                <label for="oddml">Odd da vitória:</label>
+                <input type="number" placeholder="Insira aqui a odd da vitória" id="oddml" name="oddml"
+                    autocomplete="off"><br>
 
-            <label for="oddml">Odd da vitória:</label>
-            <input type="number" placeholder="Insira aqui a odd da vitória" id="oddml" name="oddml"
-                autocomplete="off"><br>
+                <div class="button-container">
+                    <button type="button" onclick="calcular('menos025')">Handicap -0.25</button>
+                    <button type="button" onclick="calcular('dnb')">Empate Anula (0.0)</button>
+                    <button type="button" onclick="calcular('mais025')">Handicap +0.25</button>
+                    <button type="button" onclick="calcular('dc')">Dupla Chance (+0.5)</button>
+                </div>
+            </form>
 
-            <div class="button-container">
-                <button type="button" onclick="calcular('menos025')">Handicap -0.25</button>
-                <button type="button" onclick="calcular('dnb')">Empate Anula (0.0)</button>
-                <button type="button" onclick="calcular('mais025')">Handicap +0.25</button>
-                <button type="button" onclick="calcular('dc')">Dupla Chance (+0.5)</button>
+            <div id="resultsHandicap" class="results" style="display: none;">
+                <p class="result-handicap">Odd final: <span id="oddfinal"></span></p>
+                <p class="result-handicap">Stake do empate: R$ <span id="stakeempate"></span></p>
+                <p class="result-handicap">Stake da vitória: R$ <span id="stakeml"></span></p>
             </div>
-        </form>
+            <p id="errormessagehandicap" class="results"></p>
+        </div>
 
-        <div id="results" class="results" style="display: none;">
-            <p class="result-item">Odd final: <span id="oddfinal"></span></p>
-            <p class="result-item">Stake do empate: R$ <span id="stakeempate"></span></p>
-            <p class="result-item">Stake da vitória: R$ <span id="stakeml"></span></p>
+        <div class="column results-column">
+            <form class="golsForm" onsubmit="return false;">
+                <div>
+
+                    <label for="stakeGols" class="stake-label">Stake:</label>
+                    <input type="number" placeholder="Insira aqui o valor a ser utilizado na aposta" id="stakeGols"
+                        name="stakeGols" autocomplete="off"><br>
+
+                    <label for="oddExatamente">Odd Exatamente <span id="exato-gols">2</span> gols:</label>
+                    <input type="number" placeholder='Insira aqui a odd do "Exatamente 2 gols"' id="oddExatamente"
+                        name="oddExatamente" autocomplete="off"><br>
+
+                    <label for="oddOU">Odd <span id="mercado">Mais</span> de <span id="mais-gols">2</span> gols:</label>
+                    <input type="number" placeholder='Insira aqui a odd do "Mais de 2 gols"' id="oddOU" name="oddOU"
+                        autocomplete="off"><br>
+                    <div class="botoes">
+                        <label for="toggle">Mercado:</label>
+                        <button id="toggle" type="button" onclick="toggleOption()">Over</button><br>
+
+                        <label for="goals">Linha de Gols:</label>
+                        <div class="goals-container">
+                            <button type="button" class="botaogols" onclick="changeGoals(-0.25)">- 0.25</button>
+                            <span id="goals">2.00</span>
+                            <button type="button" class="botaogols" onclick="changeGoals(0.25)">+ 0.25</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div id="resultsGols" class="results" style="display: none;">
+                <p class="result-gols" id="presultado">Odd final: <span id="gols-oddfinal"></span></p>
+                <p class="result-gols" id="presultado">Stake do Exatamente <span id="exato-gols-resultado"></span> gols:
+                    R$ <span id="stakeexatamente"></span></p>
+                <p class="result-gols" id="presultado">Stake do <span id="mercado-resultado"></span> de <span
+                        id="mais-gols-resultado"></span> gols: R$
+                    <span id="stakeOU"></span>
+                </p>
+            </div>
+            <p id="errormessagegols" class="results"></p>
         </div>
     </div>
 
@@ -50,7 +93,7 @@
                 <span><i class="fab fa-instagram"></i></span>
             </div>
         </a>
-        <a href="https://x.com/gilbertofc04/status/1803273856733286525" target="_blank" rel="noopener noreferrer"
+        <!-- <a href="link twitter" target="_blank" rel="noopener noreferrer"
             class="wrapper">
             <div class="icon twitter">
                 <div class="tooltip">
@@ -58,11 +101,9 @@
                 </div>
                 <span><i class="fab fa-twitter"></i></span>
             </div>
-        </a>
-    </div>
+        </a> -->
     </div>
     <p class="copyright">&copy; Gilberto Neto</p>
-    </div>
 
     <script src="script.js"></script>
 </body>
