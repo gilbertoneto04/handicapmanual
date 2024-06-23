@@ -59,13 +59,14 @@
                     <input type="number" placeholder='Insira aqui a odd do "Mais de 2 gols"' id="oddOU" name="oddOU"
                         autocomplete="off"><br>
                     <div class="botoes">
-                        <label for="toggle">Mercado:</label>
-                        <button id="toggle" type="button" onclick="toggleOption()">Over</button><br>
+                        <!-- <label for="toggle">Mercado:</label> -->
+                        <button id="toggle" type="button" class="botaotoggle" onclick="toggleOption()"><i
+                                class="fas fa-sync-alt fa-sm"></i> <span id="toggle-text">Over</span></button><br>
 
-                        <label for="goals">Linha de Gols:</label>
+                        <!-- <label for="goals">Linha de Gols:</label> -->
                         <div class="goals-container">
                             <button type="button" class="botaogols" onclick="changeGoals(-0.25)">- 0.25</button>
-                            <span id="goals">2.00</span>
+                            <button id="goals" type="button" class="botaogols" onclick="changeGoals(0)">2.00</button>
                             <button type="button" class="botaogols" onclick="changeGoals(0.25)">+ 0.25</button>
                         </div>
                     </div>

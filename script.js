@@ -63,7 +63,7 @@ let isOver = true;
 // Botão Over/Under
 function toggleOption() {
   isOver = !isOver;
-  document.getElementById("toggle").innerText = isOver ? "Over" : "Under"; //Altera o texto do botão
+  document.getElementById("toggle-text").innerText = isOver ? "Over" : "Under"; //Altera o texto do botão
   document.getElementById("toggle").classList.toggle("under", !isOver); // Altera a classe do botão para mudar a cor
   atualizarMercado();
   chamarCalculo();
@@ -72,7 +72,7 @@ function toggleOption() {
 // Aumentar/Diminuir linha de gols - Parâmetro é -0.25 ou +0.25
 function changeGoals(amount) {
   let goals = parseFloat(document.getElementById("goals").innerText); // goals = valor de gols atual (muda conforme o usuário aperta o botão)
-  goals = Math.max(0.5, (goals + amount).toFixed(2)); //0.5 menor linha possível
+  goals = Math.max(0.5, goals + amount).toFixed(2); //0.5 menor linha possível
   document.getElementById("goals").innerText = goals;
 
   atualizarValorExato(goals);
