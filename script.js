@@ -1,318 +1,214 @@
-(function (_0x555481, _0x50da36) {
-  const _0x49b12a = _0x5ef7,
-    _0x41e54b = _0x555481();
-  while (!![]) {
-    try {
-      const _0x1c6189 =
-        (-parseInt(_0x49b12a(0x9c)) / 0x1) * (parseInt(_0x49b12a(0xa5)) / 0x2) +
-        parseInt(_0x49b12a(0xca)) / 0x3 +
-        -parseInt(_0x49b12a(0xae)) / 0x4 +
-        (-parseInt(_0x49b12a(0xad)) / 0x5) * (parseInt(_0x49b12a(0xcb)) / 0x6) +
-        parseInt(_0x49b12a(0x9b)) / 0x7 +
-        (-parseInt(_0x49b12a(0x93)) / 0x8) *
-          (-parseInt(_0x49b12a(0x98)) / 0x9) +
-        parseInt(_0x49b12a(0xb3)) / 0xa;
-      if (_0x1c6189 === _0x50da36) break;
-      else _0x41e54b["push"](_0x41e54b["shift"]());
-    } catch (_0x489f81) {
-      _0x41e54b["push"](_0x41e54b["shift"]());
-    }
-  }
-})(_0x340d, 0x88d0f);
+// Calcular handicaps (Nada a mexer por enquanto)
 function todosCamposPreenchidosHandicap() {
-  const _0x31dea4 = _0x5ef7;
-  let _0x21b4d0 = document[_0x31dea4(0xa7)]("stakeHandicap")["value"]["trim"](),
-    _0x34d460 = document["getElementById"](_0x31dea4(0x94))[_0x31dea4(0xa9)][
-      "trim"
-    ](),
-    _0x5701 = document["getElementById"](_0x31dea4(0xc1))["value"][
-      _0x31dea4(0xc7)
-    ]();
-  return _0x21b4d0 !== "" && _0x34d460 !== "" && _0x5701 !== "";
+  let stake = document.getElementById("stakeHandicap").value.trim();
+  let oddempate = document.getElementById("oddempate").value.trim();
+  let oddml = document.getElementById("oddml").value.trim();
+
+  return stake !== "" && oddempate !== "" && oddml !== "";
 }
-function calcular(_0x2c8482) {
-  const _0x3e2708 = _0x5ef7;
-  errormessage = document[_0x3e2708(0xa7)](_0x3e2708(0xba));
+
+function calcular(operation) {
+  errormessage = document.getElementById("errormessagehandicap");
   if (!todosCamposPreenchidosHandicap()) {
-    (document[_0x3e2708(0xa7)](_0x3e2708(0x9a))[_0x3e2708(0xb6)]["display"] =
-      "none"),
-      (errormessage["innerText"] = _0x3e2708(0x9e));
+    document.getElementById("resultsHandicap").style.display = "none";
+    errormessage.innerText = "Preencha todos os campos corretamente.";
     return;
   }
-  errormessage[_0x3e2708(0xb6)][_0x3e2708(0xa4)] = "none";
-  let _0x4ae710 = parseFloat(
-      document[_0x3e2708(0xa7)](_0x3e2708(0xa6))["value"]
-    ),
-    _0x3b3467 = parseFloat(
-      document[_0x3e2708(0xa7)](_0x3e2708(0x94))[_0x3e2708(0xa9)]
-    ),
-    _0x4daa45 = parseFloat(
-      document["getElementById"](_0x3e2708(0xc1))[_0x3e2708(0xa9)]
-    ),
-    _0x4cffb5,
-    _0x13b6b8,
-    _0x31e8d7;
-  switch (_0x2c8482) {
+  errormessage.style.display = "none";
+  let stake = parseFloat(document.getElementById("stakeHandicap").value);
+  let oddempate = parseFloat(document.getElementById("oddempate").value);
+  let oddml = parseFloat(document.getElementById("oddml").value);
+
+  let oddfinal, stakeempate, stakeml;
+
+  switch (operation) {
     case "dc":
-      (_0x4cffb5 = (_0x3b3467 * _0x4daa45) / (_0x3b3467 + _0x4daa45)),
-        (_0x13b6b8 = (_0x4ae710 * _0x4daa45) / (_0x3b3467 + _0x4daa45)),
-        (_0x31e8d7 = _0x4ae710 - _0x13b6b8);
+      oddfinal = (oddempate * oddml) / (oddempate + oddml);
+      stakeempate = (stake * oddml) / (oddempate + oddml);
+      stakeml = stake - stakeempate;
       break;
-    case _0x3e2708(0xb7):
-      (_0x13b6b8 = _0x4ae710 / _0x3b3467),
-        (_0x31e8d7 = _0x4ae710 - _0x13b6b8),
-        (_0x4cffb5 = (_0x31e8d7 * _0x4daa45) / _0x4ae710);
+    case "dnb":
+      stakeempate = stake / oddempate;
+      stakeml = stake - stakeempate;
+      oddfinal = (stakeml * oddml) / stake;
       break;
-    case _0x3e2708(0xc9):
-      let _0xb8fcf9 =
-        (0x64 * _0x4daa45 + 0x64) / (0x2 * _0x3b3467 + _0x4daa45) / 0x64;
-      (_0x13b6b8 = _0x4ae710 * _0xb8fcf9),
-        (_0x31e8d7 = _0x4ae710 - _0x13b6b8),
-        (_0x4cffb5 = (_0x31e8d7 * _0x4daa45) / _0x4ae710);
+    case "mais025":
+      let x = (100 * oddml + 100) / (2 * oddempate + oddml) / 100;
+      stakeempate = stake * x;
+      stakeml = stake - stakeempate;
+      oddfinal = (stakeml * oddml) / stake;
       break;
-    case _0x3e2708(0xc5):
-      (_0x13b6b8 = _0x4ae710 / 0x2 / _0x3b3467),
-        (_0x31e8d7 = _0x4ae710 - _0x13b6b8),
-        (_0x4cffb5 = (_0x31e8d7 * _0x4daa45) / _0x4ae710);
+    case "menos025":
+      stakeempate = stake / 2 / oddempate;
+      stakeml = stake - stakeempate;
+      oddfinal = (stakeml * oddml) / stake;
       break;
     default:
       return;
   }
-  (document["getElementById"](_0x3e2708(0xc0))[_0x3e2708(0xc6)] =
-    _0x4cffb5[_0x3e2708(0xa1)](0x3)),
-    (document[_0x3e2708(0xa7)]("stakeempate")["innerText"] =
-      _0x13b6b8[_0x3e2708(0xa1)](0x2)),
-    (document["getElementById"](_0x3e2708(0xb9))[_0x3e2708(0xc6)] =
-      _0x31e8d7["toFixed"](0x2)),
-    (document["getElementById"]("resultsHandicap")[_0x3e2708(0xb6)][
-      _0x3e2708(0xa4)
-    ] = _0x3e2708(0x90));
+
+  // Exibindo resultados
+  document.getElementById("oddfinal").innerText = oddfinal.toFixed(3);
+  document.getElementById("stakeempate").innerText = stakeempate.toFixed(2);
+  document.getElementById("stakeml").innerText = stakeml.toFixed(2);
+
+  // Mostrando a seção de resultados
+  document.getElementById("resultsHandicap").style.display = "block";
 }
-let isOver = !![];
+
+// Seção de gols
+
+let isOver = true;
+
+// Botão Over/Under
 function toggleOption() {
-  const _0x19c26c = _0x5ef7;
-  (isOver = !isOver),
-    (document[_0x19c26c(0xa7)]("toggle-text")[_0x19c26c(0xc6)] = isOver
-      ? _0x19c26c(0x9d)
-      : "Under"),
-    document[_0x19c26c(0xa7)](_0x19c26c(0xaf))["classList"]["toggle"](
-      _0x19c26c(0xb1),
-      !isOver
-    ),
-    atualizarMercado(),
-    chamarCalculo();
+  isOver = !isOver;
+  document.getElementById("toggle-text").innerText = isOver ? "Over" : "Under"; //Altera o texto do botão
+  document.getElementById("toggle").classList.toggle("under", !isOver); // Altera a classe do botão para mudar a cor
+  atualizarMercado();
+  let goals = parseFloat(document.getElementById("goals").innerText);
+  atualizarValorExato(goals);
+  chamarCalculo();
 }
-function _0x5ef7(_0x52bb3b, _0x4eda7b) {
-  const _0x340dbd = _0x340d();
-  return (
-    (_0x5ef7 = function (_0x5ef7df, _0xc65bac) {
-      _0x5ef7df = _0x5ef7df - 0x90;
-      let _0x48072b = _0x340dbd[_0x5ef7df];
-      return _0x48072b;
-    }),
-    _0x5ef7(_0x52bb3b, _0x4eda7b)
-  );
+
+// Aumentar/Diminuir linha de gols - Parâmetro é -0.25 ou +0.25
+function changeGoals(amount) {
+  let goals = parseFloat(document.getElementById("goals").innerText); // goals = valor de gols atual (muda conforme o usuário aperta o botão)
+  goals = Math.max(0.5, goals + amount).toFixed(2); //0.5 menor linha possível
+  document.getElementById("goals").innerText = goals;
+
+  atualizarValorExato(goals);
+  chamarCalculo();
 }
-function changeGoals(_0x5a1612) {
-  const _0x3af3b4 = _0x5ef7;
-  let _0x36046c = parseFloat(
-    document["getElementById"]("goals")[_0x3af3b4(0xc6)]
-  );
-  (_0x36046c = Math[_0x3af3b4(0xab)](0.5, _0x36046c + _0x5a1612)[
-    _0x3af3b4(0xa1)
-  ](0x2)),
-    (document["getElementById"](_0x3af3b4(0xbb))["innerText"] = _0x36046c),
-    atualizarValorExato(_0x36046c),
-    chamarCalculo();
-}
-function atualizarValorExato(_0x190d62) {
-  const _0x5ec662 = _0x5ef7;
-  let _0x532168 = _0x190d62 % 0x1,
-    _0x47f146;
-  _0x532168 === 0.5 || _0x532168 === 0.75
-    ? (_0x47f146 = Math[_0x5ec662(0xb8)](_0x190d62) + 0x1)
-    : (_0x47f146 = Math["floor"](_0x190d62)),
-    (document[_0x5ec662(0xa7)](_0x5ec662(0x9f))["innerText"] = _0x47f146),
-    (document[_0x5ec662(0xa7)](_0x5ec662(0x99))[_0x5ec662(0xc6)] = _0x47f146),
-    (document["getElementById"]("mais-gols")["innerText"] = _0x47f146),
-    (document["getElementById"](_0x5ec662(0x96))[_0x5ec662(0xc6)] = _0x47f146),
-    (document[_0x5ec662(0xa7)]("oddExatamente")[_0x5ec662(0xa0)] =
-      "Insira\x20aqui\x20a\x20odd\x20do\x20\x22Exatamente\x20" +
-      _0x47f146 +
-      _0x5ec662(0xc2)),
-    atualizarMercado();
-}
-function atualizarMercado() {
-  const _0x28e4d8 = _0x5ef7;
-  let _0x16dd50 = isOver ? "Mais" : _0x28e4d8(0xa3);
-  (document[_0x28e4d8(0xa7)]("mercado")[_0x28e4d8(0xc6)] = _0x16dd50),
-    (document["getElementById"](_0x28e4d8(0x95))["innerText"] = _0x16dd50);
-  let _0x45d0f4 = document[_0x28e4d8(0xa7)]("exato-gols")[_0x28e4d8(0xc6)];
-  document[_0x28e4d8(0xa7)](_0x28e4d8(0x97))[_0x28e4d8(0xa0)] =
-    _0x28e4d8(0xb2) + _0x16dd50 + _0x28e4d8(0xb5) + _0x45d0f4 + "\x20gols\x22";
-}
-function todosCamposPreenchidosGols() {
-  const _0x18b7be = _0x5ef7;
-  let _0x460c03 =
-      document[_0x18b7be(0xa7)]("stakeGols")[_0x18b7be(0xa9)][
-        _0x18b7be(0xc7)
-      ](),
-    _0x5c42c3 = document["getElementById"](_0x18b7be(0xb4))["value"]["trim"](),
-    _0x24dcd2 = document[_0x18b7be(0xa7)](_0x18b7be(0x97))["value"][
-      _0x18b7be(0xc7)
-    ]();
-  return _0x460c03 !== "" && _0x5c42c3 !== "" && _0x24dcd2 !== "";
-}
-function chamarCalculo() {
-  const _0x4c5601 = _0x5ef7;
-  errormessage = document[_0x4c5601(0xa7)]("errormessagegols");
-  if (!todosCamposPreenchidosGols()) {
-    (document[_0x4c5601(0xa7)]("resultsHandicap")[_0x4c5601(0xb6)]["display"] =
-      "none"),
-      (errormessage[_0x4c5601(0xc6)] = _0x4c5601(0x9e));
-    return;
-  }
-  errormessage[_0x4c5601(0xb6)][_0x4c5601(0xa4)] = _0x4c5601(0xaa);
-  let _0xa74682 = parseFloat(
-      document[_0x4c5601(0xa7)](_0x4c5601(0xbb))["innerText"]
-    ),
-    _0x44404d = _0xa74682 % 0x1;
-  if (_0x44404d === 0x0) calcularGols(_0x4c5601(0xa8));
-  else {
-    if (_0x44404d === 0.25) calcularGols(isOver ? _0x4c5601(0x91) : "under025");
-    else {
-      if (_0x44404d === 0.75)
-        calcularGols(isOver ? _0x4c5601(0xc8) : _0x4c5601(0xbd));
-      else
-        _0x44404d === 0.5
-          ? calcularGols(_0x4c5601(0xc4))
-          : console[_0x4c5601(0xbe)](_0x4c5601(0xac));
+
+function atualizarValorExato(numero) {
+  let parteDecimal = numero % 1; //Divide por ele mesmo, o resto (%) vai ser a parte decimal
+  let valorExato;
+  let mercado = isOver ? "Mais" : "Menos";
+  // Linhas abaixo: Se o gol terminar em 0.5 ou 0.75, a linha será +1
+  // Ex: linha 3.75 = Exatamente/Mais de 4
+  if (mercado == "Mais") {
+    if (parteDecimal === 0.5 || parteDecimal === 0.75) {
+      valorExato = Math.floor(numero) + 1;
+    } else {
+      valorExato = Math.floor(numero);
+    }
+  } else {
+    if (parteDecimal === 0.75) {
+      valorExato = Math.floor(numero) + 1;
+    } else {
+      valorExato = Math.floor(numero);
     }
   }
+
+  document.getElementById("exato-gols").innerText = valorExato; // alterar qtd gols do label da odd exatamente
+  document.getElementById("exato-gols-resultado").innerText = valorExato; // alterar qtd gols do label da odd exatamente
+  document.getElementById("mais-gols").innerText = valorExato; // alterar qtd gols do label da odd over/under
+  document.getElementById("mais-gols-resultado").innerText = valorExato; // alterar qtd gols do label da odd over/under
+  document.getElementById(
+    "oddExatamente"
+  ).placeholder = `Insira aqui a odd do "Exatamente ${valorExato} gols"`; // alterar qtd gols do placeholder da odd exatamente
+  atualizarMercado();
 }
-function _0x340d() {
-  const _0x554ef6 = [
-    "32TJKjAI",
-    "Over",
-    "Preencha\x20todos\x20os\x20campos\x20corretamente.",
-    "exato-gols",
-    "placeholder",
-    "toFixed",
-    "stakeexatamente",
-    "Menos",
-    "display",
-    "9392gRwifP",
-    "stakeHandicap",
-    "getElementById",
-    "linha0",
-    "value",
-    "none",
-    "max",
-    "Linha\x20de\x20gols\x20não\x20reconhecida.",
-    "1762230iShkku",
-    "2157232Mfoedo",
-    "toggle",
-    "stakeOU",
-    "under",
-    "Insira\x20aqui\x20a\x20odd\x20do\x20\x22",
-    "4325320RKAhOs",
-    "oddExatamente",
-    "\x20de\x20",
-    "style",
-    "dnb",
-    "floor",
-    "stakeml",
-    "errormessagehandicap",
-    "goals",
-    "under025",
-    "under075",
-    "error",
-    "resultsGols",
-    "oddfinal",
-    "oddml",
-    "\x20gols\x22",
-    "Opção\x20de\x20linha\x20não\x20reconhecida.",
-    "linha05",
-    "menos025",
-    "innerText",
-    "trim",
-    "over075",
-    "mais025",
-    "729909dwCips",
-    "6bcGxjT",
-    "block",
-    "over025",
-    "gols-oddfinal",
-    "119312JkQEEc",
-    "oddempate",
-    "mercado-resultado",
-    "mais-gols-resultado",
-    "oddOU",
-    "54JXCBhI",
-    "exato-gols-resultado",
-    "resultsHandicap",
-    "5859742KsEQRI",
-  ];
-  _0x340d = function () {
-    return _0x554ef6;
-  };
-  return _0x340d();
+
+function atualizarMercado() {
+  let mercado = isOver ? "Mais" : "Menos";
+  document.getElementById("mercado").innerText = mercado;
+  document.getElementById("mercado-resultado").innerText = mercado;
+  // let valorExato = parseFloat(document.getElementById("goals").innerText);
+  // atualizarValorExato(goals);
+  let valorExato = document.getElementById("exato-gols").innerText;
+  document.getElementById(
+    "oddOU"
+  ).placeholder = `Insira aqui a odd do "${mercado} de ${valorExato} gols"`; // alterar qtd gols do placeholder da odd over/under
 }
-function calcularGols(_0x58bc49) {
-  const _0x1c0d96 = _0x5ef7;
-  let _0x59b59a = parseFloat(
-      document[_0x1c0d96(0xa7)]("stakeGols")[_0x1c0d96(0xa9)]
-    ),
-    _0x432841 = parseFloat(document[_0x1c0d96(0xa7)](_0x1c0d96(0xb4))["value"]),
-    _0x53f5db = parseFloat(
-      document[_0x1c0d96(0xa7)](_0x1c0d96(0x97))[_0x1c0d96(0xa9)]
-    ),
-    _0x473157,
-    _0x17cdd4,
-    _0x26abb7,
-    _0xb0a655 =
-      (0x64 * _0x53f5db + 0x64) / (0x2 * _0x432841 + _0x53f5db) / 0x64;
-  switch (_0x58bc49) {
-    case _0x1c0d96(0xa8):
-      (_0x473157 = _0x59b59a / _0x432841),
-        (_0x17cdd4 = _0x59b59a - _0x473157),
-        (_0x26abb7 = (_0x17cdd4 * _0x53f5db) / _0x59b59a);
+
+function todosCamposPreenchidosGols() {
+  let stake = document.getElementById("stakeGols").value.trim();
+  let oddExatamente = document.getElementById("oddExatamente").value.trim();
+  let oddOU = document.getElementById("oddOU").value.trim();
+
+  return stake !== "" && oddExatamente !== "" && oddOU !== "";
+}
+
+function chamarCalculo() {
+  errormessage = document.getElementById("errormessagegols");
+  if (!todosCamposPreenchidosGols()) {
+    document.getElementById("resultsHandicap").style.display = "none";
+    errormessage.innerText = "Preencha todos os campos corretamente.";
+    return;
+  }
+  errormessage.style.display = "none";
+
+  let goals = parseFloat(document.getElementById("goals").innerText);
+  let finalValue = goals % 1;
+
+  // Lógica para verificar o valor final dos gols e o mercado
+  if (finalValue === 0) {
+    calcularGols("linha0");
+  } else if (finalValue === 0.25) {
+    calcularGols(isOver ? "over025" : "under025");
+  } else if (finalValue === 0.75) {
+    calcularGols(isOver ? "over075" : "under075");
+  } else if (finalValue === 0.5) {
+    calcularGols("linha05");
+  } else {
+    console.error("Linha de gols não reconhecida.");
+  }
+}
+
+function calcularGols(linhaSelecionada) {
+  let stake = parseFloat(document.getElementById("stakeGols").value);
+  let oddExatamente = parseFloat(
+    document.getElementById("oddExatamente").value
+  );
+  let oddOU = parseFloat(document.getElementById("oddOU").value);
+  let stakeexatamente, stakeOU, oddfinal;
+  let x = (100 * oddOU + 100) / (2 * oddExatamente + oddOU) / 100;
+
+  switch (linhaSelecionada) {
+    case "linha0":
+      stakeexatamente = stake / oddExatamente;
+      stakeOU = stake - stakeexatamente;
+      oddfinal = (stakeOU * oddOU) / stake;
       break;
-    case _0x1c0d96(0x91):
-      (_0x473157 = _0x59b59a / 0x2 / _0x432841),
-        (_0x17cdd4 = _0x59b59a - _0x473157),
-        (_0x26abb7 = (_0x17cdd4 * _0x53f5db) / _0x59b59a);
+    case "over025":
+      stakeexatamente = stake / 2 / oddExatamente;
+      stakeOU = stake - stakeexatamente;
+      oddfinal = (stakeOU * oddOU) / stake;
       break;
-    case _0x1c0d96(0xc8):
-      (_0x473157 = _0x59b59a * _0xb0a655),
-        (_0x17cdd4 = _0x59b59a - _0x473157),
-        (_0x26abb7 = (_0x17cdd4 * _0x53f5db) / _0x59b59a);
+    case "over075":
+      stakeexatamente = stake * x;
+      stakeOU = stake - stakeexatamente;
+      oddfinal = (stakeOU * oddOU) / stake;
       break;
-    case _0x1c0d96(0xbc):
-      (_0x473157 = _0x59b59a * _0xb0a655),
-        (_0x17cdd4 = _0x59b59a - _0x473157),
-        (_0x26abb7 = (_0x17cdd4 * _0x53f5db) / _0x59b59a);
+    case "under025":
+      stakeexatamente = stake * x;
+      stakeOU = stake - stakeexatamente;
+      oddfinal = (stakeOU * oddOU) / stake;
       break;
-    case _0x1c0d96(0xbd):
-      (_0x473157 = _0x59b59a / 0x2 / _0x432841),
-        (_0x17cdd4 = _0x59b59a - _0x473157),
-        (_0x26abb7 = (_0x17cdd4 * _0x53f5db) / _0x59b59a);
+    case "under075":
+      stakeexatamente = stake / 2 / oddExatamente;
+      stakeOU = stake - stakeexatamente;
+      oddfinal = (stakeOU * oddOU) / stake;
       break;
     case "linha05":
-      (_0x26abb7 = (_0x432841 * _0x53f5db) / (_0x432841 + _0x53f5db)),
-        (_0x473157 = (_0x59b59a * _0x53f5db) / (_0x432841 + _0x53f5db)),
-        (_0x17cdd4 = _0x59b59a - _0x473157);
+      oddfinal = (oddExatamente * oddOU) / (oddExatamente + oddOU);
+      stakeexatamente = (stake * oddOU) / (oddExatamente + oddOU);
+      stakeOU = stake - stakeexatamente;
+
       break;
     default:
-      console[_0x1c0d96(0xbe)](_0x1c0d96(0xc3));
+      console.error("Opção de linha não reconhecida.");
       return;
   }
-  (document[_0x1c0d96(0xa7)](_0x1c0d96(0x92))["innerText"] =
-    _0x26abb7[_0x1c0d96(0xa1)](0x3)),
-    (document["getElementById"](_0x1c0d96(0xa2))[_0x1c0d96(0xc6)] =
-      _0x473157["toFixed"](0x2)),
-    (document[_0x1c0d96(0xa7)](_0x1c0d96(0xb0))[_0x1c0d96(0xc6)] =
-      _0x17cdd4[_0x1c0d96(0xa1)](0x2)),
-    (document["getElementById"](_0x1c0d96(0xbf))[_0x1c0d96(0xb6)]["display"] =
-      _0x1c0d96(0x90));
+
+  // Exibindo resultados
+  document.getElementById("gols-oddfinal").innerText = oddfinal.toFixed(3);
+  document.getElementById("stakeexatamente").innerText =
+    stakeexatamente.toFixed(2);
+  document.getElementById("stakeOU").innerText = stakeOU.toFixed(2);
+
+  // Mostrando a seção de resultados
+  document.getElementById("resultsGols").style.display = "block";
 }
