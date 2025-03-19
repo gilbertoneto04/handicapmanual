@@ -7,9 +7,9 @@ body {
 .container {
   display: flex;
   justify-content: center;
-  align-items: center;
   gap: 40px;
-  max-width: 1200px;
+  align-items: center;
+  max-width: 600px; /* Largura reduzida do formulário */
   margin: auto;
   background-color: #fff;
   padding: 20px;
@@ -18,8 +18,7 @@ body {
 }
 
 .column {
-  width: 45%;
-  /* min-height: 100%; */ /*Testar quando integrar em arquivos diferentes*/
+  width: 100%; /* Ocupa toda a largura do container */
 }
 
 h1 {
@@ -29,99 +28,88 @@ h1 {
 
 form {
   margin-bottom: 20px;
-  width: 100;
-}
-
-label {
-  /* display: block; */
-  margin-bottom: 8px;
-}
-
-input[type="number"] {
   width: 100%;
+}
+
+.quantidade-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espaçamento entre o input e o botão */
+  margin-bottom: 20px;
+}
+
+.quantidade-container label {
+  font-weight: bold;
+}
+
+.quantidade-container input {
+  width: 150px; /* Largura fixa para o input de quantidade */
   padding: 8px;
-  margin-bottom: 12px;
   border: 1px solid #ccc;
   border-radius: 7px;
-  box-sizing: border-box;
   font-size: 16px;
-  appearance: textfield;
 }
 
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.button-container {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-button {
-  background-color: #4caf50;
-  color: white;
-  padding: 12px 20px;
+.quantidade-container button {
+  background-color: #ccc; /* Cor cinza para o botão */
+  color: #000;
+  padding: 8px 16px;
   border: none;
   border-radius: 7px;
   cursor: pointer;
   font-size: 16px;
 }
 
-button:hover {
-  background-color: #45a049;
+.quantidade-container button:hover {
+  background-color: #bbb; /* Cor cinza mais clara ao passar o mouse */
 }
 
-.button-container > button:focus {
-  background-color: #388e3c;
-}
-
-.results {
-  /* margin-top: 1px; */
-  /* padding-top: 1px; */
-  margin: 20px 0;
-  padding: 5px;
-  text-align: center;
-  /* border-top: 1px solid #ccc;  */ /* Linha que separa os botões dos resultados */
-}
-
-.results > p {
-  margin: 6px 0; /* Define a margem superior e inferior para 5px e a margem esquerda e direita para 0 */
-  padding: 0; /* Remove qualquer padding */
-}
-
-.result-handicap {
-  margin-bottom: 8px;
-}
-
-.results-column {
-  width: 45%;
-  margin-left: 5%;
-}
-
-.results-column .results {
-  margin-top: 0;
-}
-
-.results-column .goals-container {
-  margin-bottom: -15px;
-}
-
-.goals-container {
-  display: block;
+.odd-input-group {
+  display: flex;
   align-items: center;
-  gap: 10px;
+  margin-bottom: 15px;
+  gap: 10px; /* Espaçamento entre os elementos */
+}
+
+.odd-input-group label {
+  width: 80px; /* Largura fixa para os labels */
+  font-weight: bold;
+}
+
+.odd-input-group input {
+  width: 100px; /* Largura fixa para os inputs */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  font-size: 16px;
+}
+
+.fair-odd, .margem {
+  width: 120px; /* Largura fixa para fair odds e margens */
+  font-weight: bold;
   text-align: center;
 }
 
-.botoes {
-  text-align: center;
+.margem {
+  margin-left: 10px;
 }
 
-.botaotoggle {
-  margin-bottom: 10px;
+/* Cores da margem */
+.margem[data-margem="100"] {
+  color: blue; /* Azul para margem exatamente 100% */
+}
+
+.margem[data-margem="maior"] {
+  color: green; /* Verde para margem maior que 100% */
+}
+
+.margem[data-margem="menor"] {
+  color: red; /* Vermelho para margem menor que 100% */
+}
+
+/* Oculta elementos com display: none */
+[style*="display: none"] {
+  display: none !important;
 }
 
 #footer {
@@ -227,18 +215,6 @@ button:hover {
   font-size: 20px;
 }
 
-#overUnderButtons {
-  display: none;
-}
-
-#toggle {
-  background-color: #0a830ed4;
-}
-
-#toggle.under {
-  background-color: #df281bd4;
-}
-
 /* Barra lateral */
 #sidebar {
   width: 250px;
@@ -280,10 +256,7 @@ button:hover {
   color: #1abc9c; /* Cor ao passar o mouse */
 }
 
-/* Ajuste no container principal para acomodar a barra lateral */
-.container {
-  margin-left: 290px; /* Largura da barra lateral + margem */
-}
+
 
 html {
   height: 100%;
@@ -293,6 +266,29 @@ html {
 }
 
 /* Estilização do botão de informação */
+#info-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #4caf50;
+  color: white;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease-in-out;
+}
+
+#info-button:hover {
+  background-color: #388e3c;
+}
+
+/* Caixa de informações */
 #info-container {
   position: fixed;
   top: 30px;
@@ -301,17 +297,16 @@ html {
 }
 
 #info-button {
-  width: 40px;
-  height: 40px;
   background-color: #4caf50;
   border: none;
   font-size: 24px;
   cursor: pointer;
   color: white;
-  display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   transition: background 0.3s ease-in-out;
 }
@@ -330,8 +325,6 @@ html {
   font-size: 14px;
   line-height: 1.5;
   z-index: 100;
-  top: 45px;
-  right: 10px;
 }
 
 #info-container:hover #info-box {

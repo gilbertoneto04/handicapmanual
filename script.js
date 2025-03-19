@@ -212,3 +212,17 @@ function calcularGols(linhaSelecionada) {
   // Mostrando a seção de resultados
   document.getElementById("resultsGols").style.display = "block";
 }
+
+//Botão de informação
+document.addEventListener("DOMContentLoaded", function () {
+  const infoButton = document.getElementById("info-button");
+  const infoTooltip = document.getElementById("info-tooltip");
+
+  infoButton.addEventListener("mouseenter", function () {
+      infoTooltip.style.display = "block";
+  });
+
+  infoButton.addEventListener("mouseleave", function () {
+      infoTooltip.style.display = "none";
+  });
+});
