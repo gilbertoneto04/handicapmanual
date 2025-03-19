@@ -286,10 +286,9 @@ button:hover {
 }
 
 html {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow: hidden; /* Remove a barra de rolagem */
+  height: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 /* Estilização do botão de informação */
