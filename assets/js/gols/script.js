@@ -76,7 +76,7 @@ function todosCamposPreenchidosGols() {
 function chamarCalculo() {
   errormessage = document.getElementById("errormessagegols");
   if (!todosCamposPreenchidosGols()) {
-    document.getElementById("resultsHandicap").style.display = "none";
+    document.getElementById("resultsGols").style.display = "none";
     errormessage.innerText = "Preencha todos os campos corretamente.";
     return;
   }
@@ -158,7 +158,7 @@ function calcularGols(linhaSelecionada) {
 //Botão de informação
 document.addEventListener("DOMContentLoaded", function () {
   const infoButton = document.getElementById("info-button");
-  const infoTooltip = document.getElementById("info-tooltip");
+  const infoTooltip = document.getElementById("info-box");
 
   infoButton.addEventListener("mouseenter", function () {
       infoTooltip.style.display = "block";
