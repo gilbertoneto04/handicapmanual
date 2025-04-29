@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora EV%</title>
-    <link rel="stylesheet" href="styles_fair.css">
+    <link rel="stylesheet" href="../assets/css/ev/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="styles-mobile.css" media="only screen and (max-width: 768px)">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5499284079066753"
@@ -15,11 +15,6 @@
 <body>
     <!-- Barra lateral -->
     <div id="sidebar">
-        <h2>Menu</h2>
-        <ul>
-            <li><a href="index.html">Calculadora de Handicap Manual</a></li>
-            <!-- Adicione mais links aqui no futuro -->
-        </ul>
     </div>
 
     <h1>Calculadora de Fair odds e EV%</h1>
@@ -65,7 +60,14 @@
         </div>
     </div>
     
-    <script src="script_fair.js"></script>
+    <script src="../assets/js/ev/script.js"></script>
+    <script>
+        fetch('../../shared/sidebar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('sidebar').innerHTML = data;
+            });
+    </script>
 </body>
 
 </html>

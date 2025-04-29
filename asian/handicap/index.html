@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de Handicap Manual</title>
-    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/handicap/styles.css">
     <link rel="stylesheet" href="styles-mobile.css" media="only screen and (max-width: 768px)">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5499284079066753"
         crossorigin="anonymous"></script>
@@ -15,11 +15,6 @@
 <body>
     <!-- Barra lateral -->
     <div id="sidebar">
-        <h2>Menu</h2>
-        <ul>
-            <li><a href="fair.html">Calculadora EV%</a></li>
-            <!-- Adicione mais links aqui no futuro -->
-        </ul>
     </div>
 
     <h1>Calculadora de Handicap Manual</h1>
@@ -53,47 +48,6 @@
                 <p class="result-handicap">Stake da vitória: R$ <span id="stakeml"></span></p>
             </div>
             <p id="errormessagehandicap" class="results"></p>
-        </div>
-
-        <div class="column results-column">
-            <form class="golsForm" onsubmit="return false;">
-                <div>
-
-                    <label for="stakeGols" class="stake-label">Stake:</label>
-                    <input type="number" placeholder="Insira aqui o valor a ser utilizado na aposta" id="stakeGols"
-                        name="stakeGols" autocomplete="off"><br>
-
-                    <label for="oddExatamente">Odd Exatamente <span id="exato-gols">2</span> gols:</label>
-                    <input type="number" placeholder='Insira aqui a odd do "Exatamente 2 gols"' id="oddExatamente"
-                        name="oddExatamente" autocomplete="off"><br>
-
-                    <label for="oddOU">Odd <span id="mercado">Mais</span> de <span id="mais-gols">2</span> gols:</label>
-                    <input type="number" placeholder='Insira aqui a odd do "Mais de 2 gols"' id="oddOU" name="oddOU"
-                        autocomplete="off"><br>
-                    <div class="botoes">
-                        <!-- <label for="toggle">Mercado:</label> -->
-                        <button id="toggle" type="button" class="botaotoggle" onclick="toggleOption()"><i
-                                class="fas fa-sync-alt fa-sm"></i> <span id="toggle-text">Over</span></button><br>
-
-                        <!-- <label for="goals">Linha de Gols:</label> -->
-                        <div class="goals-container">
-                            <button type="button" class="botaogols" onclick="changeGoals(-0.25)">- 0.25</button>
-                            <button id="goals" type="button" class="botaogols" onclick="changeGoals(0)">2.00</button>
-                            <button type="button" class="botaogols" onclick="changeGoals(0.25)">+ 0.25</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-            <div id="resultsGols" class="results" style="display: none;">
-                <p class="result-gols" id="presultado">Odd final: <span id="gols-oddfinal"></span></p>
-                <p class="result-gols" id="presultado">Stake do Exatamente <span id="exato-gols-resultado"></span> gols:
-                    R$ <span id="stakeexatamente"></span></p>
-                <p class="result-gols" id="presultado">Stake do <span id="mercado-resultado"></span> de <span
-                        id="mais-gols-resultado"></span> gols: R$
-                    <span id="stakeOU"></span>
-                </p>
-            </div>
-            <p id="errormessagegols" class="results"></p>
         </div>
     </div>
 
@@ -130,7 +84,15 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="../../assets/js/handicap/script.js"></script>
+    <script>
+        fetch('../../shared/sidebar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('sidebar').innerHTML = data;
+            });
+    </script>
+    
 </body>
 
 </html>
