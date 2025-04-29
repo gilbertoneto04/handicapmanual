@@ -2,7 +2,7 @@
     "redirects": [
       {
         "source": "/",
-        "destination": "/asian/handicap/index.html",
+        "destination": "/asian/handicap/handicap.html",
         "permanent": true
       }
     ]
