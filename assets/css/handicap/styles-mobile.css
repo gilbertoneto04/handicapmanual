@@ -1,0 +1,53 @@
+.botaogols {
+    margin: 4px; /* Aumenta o espaçamento entre os botões na versão mobile */
+  }
+  
+  @media (max-width: 768px) {
+    #sidebar {
+        width: 100%;
+        max-width: 90%;
+        height: auto;
+        max-height: 300px;
+        position: relative;
+        padding: 10px;
+        box-shadow: none;
+        text-align: center;
+        left: 0;
+        top: 0;
+        bottom: auto;
+        overflow-y: auto; /* Adiciona rolagem caso tenha muito conteúdo */
+        z-index: 1;
+    }
+  
+    #sidebar ul {
+        display: flex;
+        justify-content: center;
+        padding: 0;
+    }
+  
+    #sidebar ul li {
+        margin: 0 10px;
+        display: inline-block;
+    }
+  
+    .container {
+        margin-left: 0;
+        padding: 10px;
+        flex-direction: column;
+    }
+  
+    .column {
+        width: 100%;
+    }
+  }
+  
+  
+  html, body {
+      height: auto !important;
+      overflow-y: auto !important;
+  }
+  
+  * {
+      box-sizing: border-box;
+  }
+  
