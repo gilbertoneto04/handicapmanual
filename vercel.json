@@ -1,17 +1,21 @@
 {
-    "redirects": [
-      {
-        "source": "/",
-        "destination": "/asian/handicap/handicap.html",
-        "permanent": true
-      }
-    ],
-
-    
-    "cleanUrls": true,
-    "rewrites": [
-      { "source": "/asian/gols/gol", "destination": "/asian/gols/gol.html" },
-      { "source": "/asian/handicap/handicap", "destination": "/asian/handicap/handicap.html" },
-      { "source": "/ev-calculator/fair", "destination": "/ev-calculator/fair.html" }
-    ]
-  }
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "handicapmanual.vercel.app"
+        }
+      ],
+      "destination": "https://handicap.com.br/:1",
+      "permanent": true
+    }
+  ],
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/asian/gols/gol", "destination": "/asian/gols/gol.html" },
+    { "source": "/asian/handicap/handicap", "destination": "/asian/handicap/handicap.html" },
+    { "source": "/ev-calculator/fair", "destination": "/ev-calculator/fair.html" }
+  ]
+}
