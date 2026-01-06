@@ -19,7 +19,7 @@ const InfoButton: React.FC = () => {
                 Ferramenta em desenvolvimento com intuito de ajudar a comunidade.
             </p>
             <p className="mb-2">
-                <strong>Tutorial:</strong> Em breve.
+                <strong>Tutorial:</strong> https://youtu.be/7XNyII2FYtw
             </p>
             <p>
                 Qualquer dúvida/feedback, entre em contato pelo Telegram <strong>@gilbertoneto16</strong>.
