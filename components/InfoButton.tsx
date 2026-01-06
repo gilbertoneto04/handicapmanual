@@ -19,7 +19,7 @@ const InfoButton: React.FC = () => {
                 Ferramenta em desenvolvimento com intuito de ajudar a comunidade.
             </p>
             <p className="mb-2">
-                <strong>Tutorial:</strong> <a href="https://youtu.be/7XNyII2FYtw">Clique Aqui</a>
+                <strong>Tutorial:</strong> <a href="https://youtu.be/7XNyII2FYtw" target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:underline hover:text-emerald-300 ml-1">Clique Aqui</a>
             </p>
             <p>
                 Qualquer dúvida/feedback, entre em contato pelo Telegram <strong>@gilbertoneto16</strong>.
