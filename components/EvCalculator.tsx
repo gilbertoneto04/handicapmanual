@@ -194,7 +194,7 @@ const EvCalculator: React.FC = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                 {[
                     { id: 'traditional', label: 'Tradicional' },
-                    { id: 'mpto', label: 'MPTO (Aditivo)' },
+                    { id: 'mpto', label: 'MPTO' },
                     { id: 'logarithmic', label: 'Logarítmica' },
                     { id: 'oddsratio', label: 'Odds Ratio' }
                 ].map((m) => (
