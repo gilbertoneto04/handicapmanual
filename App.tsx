@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Menu, Send } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Menu, Send, Instagram } from 'lucide-react';
 import { TabType } from './types';
 import Sidebar from './components/Sidebar';
 import HandicapCalculator from './components/HandicapCalculator';
@@ -10,9 +10,27 @@ import SurebetCalculator from './components/SurebetCalculator';
 import AverageOddCalculator from './components/AverageOddCalculator';
 import InfoButton from './components/InfoButton';
 
+// Extend window interface for gtag
+declare global {
+  interface Window {
+    gtag: (command: string, action: string, params?: any) => void;
+  }
+}
+
 const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabType>('handicap');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Rastrear mudanças de aba no Google Analytics
+  useEffect(() => {
+    if (typeof window.gtag !== 'undefined') {
+      window.gtag('event', 'page_view', {
+        page_title: `Calculadora - ${activeTab}`,
+        page_location: window.location.href,
+        page_path: `/${activeTab}`
+      });
+    }
+  }, [activeTab]);
 
   const renderContent = () => {
     switch (activeTab) {
@@ -65,15 +83,24 @@ const App: React.FC = () => {
             </div>
             
             {/* Social Footer */}
-            <div className="mt-12 text-center border-t border-slate-800 pt-8 pb-4">
+            <div className="mt-12 text-center border-t border-slate-800 pt-8 pb-4 flex justify-center gap-6">
+                <a 
+                    href="https://www.instagram.com/gilbertoneto16/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-slate-500 hover:text-pink-400 transition-colors"
+                >
+                    <Instagram size={18} />
+                    <span>@gilbertoneto16</span>
+                </a>
                 <a 
                     href="https://t.me/gilbertoneto16" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-slate-500 hover:text-emerald-400 transition-colors"
+                    className="inline-flex items-center gap-2 text-slate-500 hover:text-blue-400 transition-colors"
                 >
-                    <Send size={16} />
-                    <span>@gilbertoneto16</span>
+                    <Send size={18} />
+                    <span>Telegram</span>
                 </a>
             </div>
         </main>
