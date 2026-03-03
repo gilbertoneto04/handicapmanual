@@ -76,7 +76,7 @@ const RealOddCalculator: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto w-full animate-in fade-in zoom-in duration-300">
-      <h2 className="text-3xl font-bold text-white mb-8 text-center">Calculadora Odd Sem Taxa</h2>
+      <h2 className="text-3xl font-bold text-white mb-8 text-center">Cálculo de Comissão</h2>
       
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Settings Panel */}
