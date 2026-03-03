@@ -185,10 +185,14 @@ const RealOddCalculator: React.FC = () => {
                             </div>
 
                             {res && !res.error && (
-                                <div className="mt-3 pt-3 border-t border-slate-700/50 grid grid-cols-3 gap-2 text-center">
+                                <div className="mt-3 pt-3 border-t border-slate-700/50 grid grid-cols-2 sm:grid-cols-4 gap-2 text-center">
                                     <div className="bg-slate-800/50 rounded p-2">
                                         <p className="text-[10px] text-slate-500 uppercase">Odd Real</p>
-                                        <p className="text-lg font-bold text-emerald-400">{res.realOdd.toFixed(3)}</p>
+                                        <p className="text-lg font-bold text-emerald-400">{res.realOdd.toFixed(4)}</p>
+                                    </div>
+                                    <div className="bg-slate-800/50 rounded p-2">
+                                        <p className="text-[10px] text-slate-500 uppercase">Taxa</p>
+                                        <p className="text-sm font-bold text-red-400">- R$ {res.commissionAmount.toFixed(2)}</p>
                                     </div>
                                     <div className="bg-slate-800/50 rounded p-2">
                                         <p className="text-[10px] text-slate-500 uppercase">Lucro Liq.</p>
