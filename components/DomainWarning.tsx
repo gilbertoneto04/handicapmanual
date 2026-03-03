@@ -23,6 +23,7 @@ const DomainWarning: React.FC = () => {
             <a 
               href="https://handicap.com.br" 
               className="underline font-bold ml-1 hover:text-slate-800"
+              rel="noreferrer"
             >
               handicap.com.br
             </a>
