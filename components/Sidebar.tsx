@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calculator, Goal, Percent, TrendingUp, Scale, Layers } from 'lucide-react';
+import { Calculator, Goal, Percent, TrendingUp, Scale, Layers, DollarSign } from 'lucide-react';
 import { TabType } from '../types';
 
 interface SidebarProps {
@@ -17,6 +17,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, isMobileMenu
     { id: 'kelly', label: 'Critério de Kelly', icon: <TrendingUp size={20} /> },
     { id: 'surebet', label: 'Calculadora Surebet', icon: <Scale size={20} /> },
     { id: 'average', label: 'Odd Média', icon: <Layers size={20} /> },
+    { id: 'real', label: 'Taxa de Odds', icon: <DollarSign size={20} /> },
   ];
 
   const handleTabClick = (id: string) => {

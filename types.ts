@@ -1,4 +1,4 @@
-export type TabType = 'handicap' | 'goals' | 'ev' | 'kelly' | 'surebet' | 'average';
+export type TabType = 'handicap' | 'goals' | 'ev' | 'kelly' | 'surebet' | 'average' | 'real';
 
 export interface HandicapResult {
   finalOdd: number;
