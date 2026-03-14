@@ -46,11 +46,15 @@ const RealOddCalculator: React.FC = () => {
       
       // Safety: if adjusted odd is <= 1, profit is 0 or negative (loss of stake?)
       // Usually odds don't go below 1.01. If ticks reduce it below 1, it's invalid.
-      if (adjustedOdd <= 1) return { realOdd: 0, netProfit: 0, netReturn: 0, error: true };
+      if (adjustedOdd <= 1) return { realOdd: 0, netProfit: 0, netReturn: 0, commissionAmount: 0, error: true };
 
+      const originalGrossProfit = s * (o - 1);
       const grossProfit = s * (adjustedOdd - 1);
-      const commissionAmount = grossProfit * (comm / 100);
-      const netProfit = grossProfit - commissionAmount;
+      const exchangeCommission = grossProfit * (comm / 100);
+      const tickLoss = originalGrossProfit - grossProfit;
+      
+      const totalTaxAmount = exchangeCommission + tickLoss;
+      const netProfit = grossProfit - exchangeCommission;
       const netReturn = s + netProfit;
       const realOdd = netReturn / s;
 
@@ -58,7 +62,7 @@ const RealOddCalculator: React.FC = () => {
           realOdd,
           netProfit,
           netReturn,
-          commissionAmount,
+          commissionAmount: totalTaxAmount,
           error: false
       };
   };
