@@ -88,10 +88,7 @@ const KellyIncrementCalculator: React.FC<KellyIncrementProps> = ({ initialData }
     }));
 
     if (parsedAllocs.some(a => isNaN(a.odd) || isNaN(a.pct) || a.odd <= 1 || a.pct <= 0)) return;
-    if (parsedAllocs.some(a => a.odd >= o2v)) {
-      setError('Todas as odds anteriores devem ser menores que a nova odd.');
-      return;
-    }
+
 
     // A1 total e odd ponderada atual das alocações existentes
     const totalA1 = parsedAllocs.reduce((s, a) => s + a.pct, 0);
