@@ -6,9 +6,12 @@ import HandicapCalculator from './components/HandicapCalculator';
 import GoalsCalculator from './components/GoalsCalculator';
 import EvCalculator from './components/EvCalculator';
 import KellyCalculator from './components/KellyCalculator';
+import KellyIncrementCalculator from './components/KellyIncrementCalculator';
 import SurebetCalculator from './components/SurebetCalculator';
 import AverageOddCalculator from './components/AverageOddCalculator';
+import RealOddCalculator from './components/RealOddCalculator';
 import InfoButton from './components/InfoButton';
+import DomainWarning from './components/DomainWarning';
 
 // Extend window interface for gtag
 declare global {
@@ -42,10 +45,14 @@ const App: React.FC = () => {
         return <EvCalculator />;
       case 'kelly':
         return <KellyCalculator />;
+      case 'kellyincrement':
+        return <KellyIncrementCalculator />;
       case 'surebet':
         return <SurebetCalculator />;
       case 'average':
         return <AverageOddCalculator />;
+      case 'real':
+        return <RealOddCalculator />;
       default:
         return <HandicapCalculator />;
     }
@@ -53,6 +60,7 @@ const App: React.FC = () => {
 
   return (
     <div className="flex h-screen bg-slate-900 text-slate-100 overflow-hidden">
+      <DomainWarning />
       
       {/* Sidebar Navigation */}
       <Sidebar 
