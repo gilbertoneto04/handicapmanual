@@ -174,7 +174,7 @@ const EvCalculator: React.FC = () => {
   return (
     <div className="max-w-3xl mx-auto w-full animate-in fade-in zoom-in duration-300">
       <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
-        <h2 className="text-3xl font-bold text-white">Calculadora EV%</h2>
+        <h2 className="text-3xl font-bold text-white text-center">Calculadora EV%</h2>
         <div className="flex items-center gap-2">
             <button 
                 onClick={resetFields}
@@ -194,7 +194,7 @@ const EvCalculator: React.FC = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                 {[
                     { id: 'traditional', label: 'Tradicional' },
-                    { id: 'mpto', label: 'MPTO' },
+                    { id: 'mpto', label: 'MPTO (Aditivo)' },
                     { id: 'logarithmic', label: 'Logarítmica' },
                     { id: 'oddsratio', label: 'Odds Ratio' }
                 ].map((m) => (
